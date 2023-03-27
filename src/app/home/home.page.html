@@ -1,20 +1,96 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-padding">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-avatar slot="start">
+      <img
+        src="https://img.freepik.com/foto-gratis/feliz-wan-tapa-escritura-general-portapapeles_23-2148073078.jpg?w=740&t=st=1679881672~exp=1679882272~hmac=454ffa98495e42a72299aefd2ff4246729834165ddc65800d700113098fa16b7"
+        height="35px" width="35px" alt="">
+    </ion-avatar>
+    <h1>Repa Express</h1>
+    <ion-icon class="icon-salir" name="close-circle" slot="end" routerLink="/login" (click)="Salir()"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content fullscreen="true">
+  <div class="heading">
+    <h1>Remodela tu hogar</h1>
+    <h1>Con Nosotros!</h1>
   </div>
+  <div class="search">
+    <ion-input placeholder="Busca lo que necesitas!"></ion-input>
+    <ion-icon class="icon-buscar" name="search"></ion-icon>
+  </div>
+  <div class="tabs">
+    <div class="tab-icon active"><ion-icon class="iconos" name="color-fill"></ion-icon></div>
+    <div class="tab-icon active"><ion-icon class="iconos" name="build"></ion-icon></div>
+    <div class="tab-icon active"><ion-icon class="iconos" name="flash"></ion-icon></div>
+    <div class="tab-icon active"><ion-icon class="iconos" name="construct"></ion-icon></div>
+  </div>
+  <div class="categorias">
+    <div class="cat">
+      Nuevo
+    </div>
+    <div class="cat active">
+      Mas visto
+      <div></div>
+    </div>
+    <div class="cat">
+      Todo
+    </div>
+  </div>
+  <div class="packages">
+    <ion-card>
+      <ion-img class="card-img"
+        src="https://img.freepik.com/foto-gratis/pintando-paredes-rosa_53876-63286.jpg?w=900&t=st=1679897697~exp=1679898297~hmac=87e85514c2321c841964c8100ea2a454ae6e019cbf21b39c54de959e573f197a"
+        alt=""></ion-img>
+      <ion-card-content>
+        <ion-card-title>Pintor</ion-card-title>
+        <p>Pintamos tu hogar</p>
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block">Contactar</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" color="secondary">Ver más</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-card>
+      <ion-img class="card-img"
+        src="https://img.freepik.com/foto-gratis/primer-plano-manos-electricista-caucasico-que-sostiene-destornillador-que-trabaja-enchufe-electrico-sistema-electrico-residencial-instalando-enchufe-pared-reparacion-hogar_166373-2203.jpg?w=1060&t=st=1679897766~exp=1679898366~hmac=64bf089f18c0fb5ef40e63be197deb0b8e81d9530f1b8d5e3f97930fd5497bb1"
+        alt=""></ion-img>
+      <ion-card-content>
+        <ion-card-title>Electricista</ion-card-title>
+        <p>Reparamos tu hogar</p>
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block">Contactar</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" color="secondary">Ver más</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-card>
+      <ion-img class="card-img"
+        src="https://img.freepik.com/foto-gratis/reparacion-trabajador-mantenimiento-servicio_23-2149176719.jpg?w=996&t=st=1679889021~exp=1679889621~hmac=6410e7c65f50d596998a4eb32ed0b0b4022940f64897d8fa6f74f92e22cc93e8"
+        alt=""></ion-img>
+      <ion-card-content>
+        <ion-card-title>Plomero</ion-card-title>
+        <p>hacemos tu vida mas facil</p>
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block">Contactar</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button expand="block" color="secondary">Ver más</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+
 </ion-content>
