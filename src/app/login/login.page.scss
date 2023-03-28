@@ -84,4 +84,22 @@ ion-content {
             width: 100%;
         }      
     }
+    .footer{
+        color: #000;
+        padding: 0 12vw;
+        margin-top: 100px;
+        text-align: center;
+        
+
+        h3 {
+            font-size: 0.9rem;
+            font-weight: 300;
+
+            span{
+                font-size: 0.9rem;
+                color:#f9b801;
+                font-weight: 500;
+            }
+        }
+    }
 }

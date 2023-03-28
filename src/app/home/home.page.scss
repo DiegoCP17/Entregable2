@@ -9,7 +9,10 @@ ion-toolbar{
   &.toolbar-container{
     --padding:0;
   }
+  
   border-radius: 30px;
+  text-align: center;
+
   .icon-salir{
     align-items: end;
     height: 35px;
@@ -21,7 +24,7 @@ ion-toolbar{
     h1 {
       font-size: 1.7rem;
       font-weight: bolder;
-      padding-left: 35px;
+      
     }
 }
 
@@ -117,6 +120,20 @@ ion-toolbar{
     background-size: cover;
     object-fit: cover;
   }
+
+  ion-card-content{
+
+    .parrafo-info{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-top: 15px;
+        height: auto;
+        display: flex;
+        min-height: auto;
+      }
+  }
+
   ion-card-tittle{
     position: absolute;
     color: #fbe7b1;
@@ -125,4 +142,5 @@ ion-toolbar{
     padding-left: 8px;
 
   }
+
 }
