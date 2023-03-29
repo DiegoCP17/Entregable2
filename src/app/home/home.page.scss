@@ -131,6 +131,8 @@ ion-toolbar{
         height: auto;
         display: flex;
         min-height: auto;
+        max-width: max-content;
+        width: 100%;
       }
   }
 
