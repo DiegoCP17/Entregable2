@@ -20,8 +20,6 @@ export class RegisterPage implements OnInit {
     private navCtrl: NavController
   ) { }
 
-  
-
   ngOnInit() {}
 
   async register(user: User) {
@@ -36,7 +34,7 @@ export class RegisterPage implements OnInit {
         console.log(data);
 
         this.navCtrl.navigateRoot("home");
-      }); // Use await instead of .then()
+      }); 
 
     } catch (error:any) {
       error.message = "Error al Registrarse!";
@@ -49,8 +47,8 @@ export class RegisterPage implements OnInit {
 
   }
 }
-formValidation(user: User) { // Correct the function name and accept the user object as a parameter
-  if (!this.User.email) { // Use the user object to validate email and password
+formValidation(user: User) { 
+  if (!this.User.email) { 
     this.showToast("Ingrese un Email");
     return false;
   }
@@ -58,12 +56,12 @@ formValidation(user: User) { // Correct the function name and accept the user ob
     this.showToast("Ingrese una Contraseña");
     return false;
   }
-  return true; // Return true here as validation passed
+  return true; 
 }
 
-showToast(message: string) { // Pass the message parameter to showToast function
+showToast(message: string) { 
   this.toastCtrl.create({
-    message: message, // Use the message parameter
+    message: message, 
     duration: 4000
   }).then(toastData => toastData.present());
 }
