@@ -33,24 +33,24 @@ export class LoginPage implements OnInit {
 
           this.navCtrl.navigateRoot("home");
         })
-      } catch (e:any) {
-        e.message = "Usuario no registrado";
-        let errorMessage = e.message || e.getLocalizeMessage();
+      } catch (error:any) {
+      error.message = "Error al Ingresar!";
+      let errorMessage = error.message || error.getLocalizeMessage();
 
-        this.showToast(errorMessage);
-      }
+      this.showToast(errorMessage);
+    }
 
-      await loader.dismiss();
+    await loader.dismiss();
     }
   }
 
   formValidation() {
-    if (this.User.email) {
+    if (!this.User.email) {
       this.showToast("Ingrese un correo");
       return false;
     }
 
-    if (this.User.password) {
+    if (!this.User.password) {
       this.showToast("Ingrese una contraseña");
       return false;
     }
