@@ -1,0 +1,68 @@
+npm install firebase
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyB1tQ0bScDyvagUooF9p_v540cVBoUi6R0",
+  authDomain: "appionictdea-7f53f.firebaseapp.com",
+  projectId: "appionictdea-7f53f",
+  storageBucket: "appionictdea-7f53f.appspot.com",
+  messagingSenderId: "465037763651",
+  appId: "1:465037763651:web:7588840b41fe64f575e0f6",
+  measurementId: "G-T345Z41EDM"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+
+async register(user: User) {
+    if (this.formValdation()) {
+      let loader = await this.loadingCtrl.create({
+        message: "Espere por favor...."
+      })
+      await loader.present();
+
+      try {
+        await this.afAuth.createUserWithEmailAndPassword(user.email, user.password).then(data => {
+          console.log(data)
+
+          this.navCtrl.navigateRoot("home")
+        })
+      } catch (error:any) {
+        error.message = "Error al Registrarse!";
+        let errorMessage = error.message || error.getLocalizeMessage();
+
+        this.showToast(errorMessage)
+      }
+
+      await loader.dismiss();
+
+    }
+  }
+  
+  formValdation() {
+    if (!this.User.email) {
+      this.showToast("Ingrese un Email");
+      return false;
+    }
+    if (!this.User.password) {
+      this.showToast("Ingrese una Contraseña");
+      return false;
+    }
+    return false;
+  }
+
+  showToast() {
+    this.toastCtrl.create({
+      message: message,
+      duration: 4000
+    }).then(toastData => toastData.present());
+  }
