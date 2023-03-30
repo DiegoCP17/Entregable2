@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { LoadingController, NavController, ToastController } from '@ionic/angular';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +10,58 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  constructor( private router: Router) { }
+  User = {} as User;
 
-  ngOnInit() {
+  constructor(
+    private toastCtrl: ToastController,
+    private loadingCtrl: LoadingController,
+    private afAuth: AngularFireAuth,
+    private navCtrl: NavController ) { }
+
+  ngOnInit() {}
+
+  async login(user: User) {
+    if (this.formValidation()){
+      let loader = await this.loadingCtrl.create({
+        message: "Espere un momento por favor..."
+      });
+      await loader.present();
+
+      try{
+        await this.afAuth.signInWithEmailAndPassword(user.email, user.password).then(data =>{
+          console.log(data);
+
+          this.navCtrl.navigateRoot("home");
+        })
+      } catch (e:any) {
+        e.message = "Usuario no registrado";
+        let errorMessage = e.message || e.getLocalizeMessage();
+
+        this.showToast(errorMessage);
+      }
+
+      await loader.dismiss();
+    }
   }
 
-  GoToregister() {
-    this.router.navigate(['../register'])
+  formValidation() {
+    if (this.User.email) {
+      this.showToast("Ingrese un correo");
+      return false;
+    }
+
+    if (this.User.password) {
+      this.showToast("Ingrese una contraseña");
+      return false;
+    }
+
+    return true;
+  }
+
+  showToast(message: string) {
+    this.toastCtrl.create({
+      message: message,
+      duration: 5000 //
+    }).then(toastData => toastData.present());
   }
 }

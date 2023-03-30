@@ -8,22 +8,22 @@
       <div class="form-imput">
         <ion-icon name="mail-outline"></ion-icon>
         <ion-item>
-          <ion-label position="floating" required>Correo</ion-label>
-          <ion-input type="email"></ion-input>
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input type="email" required [(ngModel)]="User.email" ></ion-input>
         </ion-item>
       </div>
       <div class="form-imput">
         <ion-icon name="lock-closed-outline"></ion-icon>
         <ion-item>
-          <ion-label position="floating" required>Contraseña</ion-label>
-          <ion-input type="password"></ion-input>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" required [(ngModel)]="User.password"></ion-input>
         </ion-item>
       </div>
     </div>
     <div class="action-button ion-padding">
-      <ion-button size="large" class="login-button" [routerLink]="['/home']">Acceder</ion-button>
+      <ion-button size="large" class="login-button" [routerLink]="['/home']" (click)="login(User)">Acceder</ion-button>
       <p>Olvidaste tu Contraseña ?</p>
-      <ion-button class="signup-button" size="large" fill="outline" [routerLink]="['/register']">Registrate</ion-button>
+      <ion-button class="signup-button" size="large" fill="outline" [routerLink]="['/register']" {routerLink}="{'/register'}">Registrate</ion-button>
     </div>
   </div>
 </ion-content>
