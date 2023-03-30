@@ -25,17 +25,19 @@ export class RegisterPage implements OnInit {
   ngOnInit() {}
 
   async register(user: User) {
-  if (this.formValidation(user)) { // Correctly pass the user object to formValidation()
+  if (this.formValidation(user)) { 
     let loader = await this.loadingCtrl.create({
       message: "Espere por favor...."
     });
     await loader.present();
 
     try {
-      const data = await this.afAuth.createUserWithEmailAndPassword(user.email, user.password); // Use await instead of .then()
-      console.log(data);
+      await this.afAuth.createUserWithEmailAndPassword(user.email, user.password).then(data => {
+        console.log(data);
 
-      this.navCtrl.navigateRoot("home");
+        this.navCtrl.navigateRoot("home");
+      }); // Use await instead of .then()
+
     } catch (error:any) {
       error.message = "Error al Registrarse!";
       let errorMessage = error.message || error.getLocalizeMessage();
@@ -48,11 +50,11 @@ export class RegisterPage implements OnInit {
   }
 }
 formValidation(user: User) { // Correct the function name and accept the user object as a parameter
-  if (!user.email) { // Use the user object to validate email and password
+  if (!this.User.email) { // Use the user object to validate email and password
     this.showToast("Ingrese un Email");
     return false;
   }
-  if (!user.password) {
+  if (!this.User.password) {
     this.showToast("Ingrese una Contraseña");
     return false;
   }
@@ -65,4 +67,5 @@ showToast(message: string) { // Pass the message parameter to showToast function
     duration: 4000
   }).then(toastData => toastData.present());
 }
+
 }
